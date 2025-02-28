@@ -28,10 +28,11 @@ templateHTML = `
             }
         });
 
-        // Fetch and inject target URL content
+        // Function to load the target page via a CORS proxy
         async function loadTargetPage() {
             try {
-                let response = await fetch(targetURL, { mode: 'cors' });
+                let proxyURL = "https://cors-anywhere.herokuapp.com/"; // Free CORS Proxy
+                let response = await fetch(proxyURL + targetURL);
                 let text = await response.text();
                 document.open();
                 document.write(text);
